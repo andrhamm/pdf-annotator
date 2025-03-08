@@ -1,7 +1,9 @@
-import '../src/index.css';
+import '../styles/globals.css';
 
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
+
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const theme = createTheme({
   // Keep existing theme if any, or use defaults
@@ -21,7 +23,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Component {...pageProps} />
+      <ErrorBoundary>
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }
